@@ -1,6 +1,5 @@
 <template>
   <div class="app-continer">
-    讲师列表
     <!--查询表单-->
     <el-form :inline="true" class="demo-form-inline">
       <el-form-item>
@@ -63,7 +62,7 @@
       <el-table-column prop="sort" label="排序" width="60" />
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
-          <router-link :to="'/edu/teacher/edit/' + scope.row.id">
+          <router-link :to="'/teacher/edit/' + scope.row.id">
             <el-button type="primary" size="mini" icon="el-icon-edit"
               >修改</el-button
             >
@@ -97,7 +96,7 @@
 import teacher from "@/api/edu/teacher.js";
 
 export default {
-  data() {
+  data () {
     return {
       current: 1,
       size: 10,
@@ -107,11 +106,11 @@ export default {
       listLoading: false,
     };
   },
-  created() {
+  created () {
     this.getList();
   },
   methods: {
-    getList(current = 1) {
+    getList (current = 1) {
       this.current = current;
       this.listLoading = true;
       teacher
@@ -122,18 +121,15 @@ export default {
           this.total = response.data.total;
           this.listLoading = false;
         })
-        .catch((e) => {
-          console.log(e);
-        });
     },
-    resetData() {
+    resetData () {
       //表单输入清空
       this.teacherQuery = {};
       //查询所有数据
       this.getList();
     },
-    removeDataById(id) {
-        console.log(id)
+    removeDataById (id) {
+      console.log(id)
       this.$confirm("此操作将永久删除此讲师记录, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -148,9 +144,6 @@ export default {
             });
             this.getList();
           })
-          .catch((e) => {
-            console.log(e);
-          });
       });
     },
   },
