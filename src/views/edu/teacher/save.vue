@@ -20,6 +20,7 @@
         <el-input v-model="teacher.intro" :rows="10" type="textarea" />
       </el-form-item>
       <!-- 讲师头像：TODO -->
+      
       <el-form-item>
         <el-button
           :disabled="saveBtnDisabled"
